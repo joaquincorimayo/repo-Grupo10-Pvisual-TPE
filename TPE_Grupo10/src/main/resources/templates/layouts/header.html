@@ -7,11 +7,10 @@
 <body>
 	<header th:fragment="fheader">
 		<nav>
-			<a th:href="inicio">Inicio</a>
-			<a th:href="ranking">Ranking de Artistas</a>
-			<a th:href="candidatos">Agregar nuevo artista</a>
-			<a th:href="usuarios">Gente que ya voto</a>
-			<a th:href="votar">Ir a votar!</a>
+			<a th:href="@{/inicio}">Inicio</a>
+			<a th:href="@{/candidatos/listaCandidatos}">Candidatos</a> 
+			<a th:href="@{/usuarios}">Usuario</a> 
+			<a th:href="@{/votar}">Ir a votar!</a>
 		</nav>
 	</header>
 </body>

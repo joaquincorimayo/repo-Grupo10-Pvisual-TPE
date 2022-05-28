@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.tpe.model;
 
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -8,25 +7,33 @@ import javax.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class Candidato {
-	
-	@Min(value=0, message="El Codigo del Candidato debe ser mayor a 0")
+
+	@Min(value = 1, message = "El Codigo del Candidato debe ser mayor a 0")
 	private int codigo;
-	@NotEmpty(message="Debe ingresar nombre del Artista o Banda")
-	@Size(min=3, max=100, message="El nombre debe tener entre 3 a 100 caracteres"
+	@NotEmpty(message = "Debe ingresar nombre del Artista o Banda")
+	@Size(min = 3, max = 100, message = "El nombre debe tener entre 3 a 100 caracteres")
 	private String nombre;
-	@NotEmpty(message="Debe ingresar el genero musical")
+	@NotEmpty(message = "Debe ingresar el genero musical")
 	private String genero;
-	@NotEmpty(message="Debe ingresar una breve descripcion")
+	@NotEmpty(message = "Debe ingresar una breve descripcion")
 	private String descripcion;
-	
 	private String uri;
-	
 	private int cantidadVotos;
+
 	
 	public Candidato() {
-		// TODO Auto-generated constructor stub
+		
+	}
+
+	public Candidato(int codigo, String nombre, String genero, String descripcion, String uri, int cantidadVotos) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.descripcion = descripcion;
+		this.uri = uri;
+		this.cantidadVotos = cantidadVotos;
 	}
 
 	public int getCodigo() {
@@ -83,5 +90,4 @@ public class Candidato {
 				+ descripcion + ", uri=" + uri + ", cantidadVotos=" + cantidadVotos + "]";
 	}
 
-	
 }
