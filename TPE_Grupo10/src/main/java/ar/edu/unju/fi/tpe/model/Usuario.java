@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Usuario {
-	@Min(value=1000000, message="El DNI del alumno debe ser mayor o igual a 1.000.000")
+	@Min(value = 1000000, message = "El DNI del alumno debe ser mayor o igual a 1.000.000")
 	private String dni;
-	@NotEmpty(message="El nombre del alumno no puede ser vacío")
-	@Size(min=3, max=100, message="El nombre debe tener entre 3 a 100 caracteres")
+	@NotEmpty(message = "El nombre del alumno no puede ser vacío")
+	@Size(min = 3, max = 100, message = "El nombre debe tener entre 3 a 100 caracteres")
 	private String nombre;
-	@NotEmpty(message="El email del alumno no puede ser vacío")
+	@NotEmpty(message = "El email del alumno no puede ser vacío")
 	@Email
 	private String email;
 	@NotNull
@@ -29,7 +29,7 @@ public class Usuario {
 	private LocalDate fechaN;
 	private int votos;
 	private int edadUsuario;
-	
+
 	public int getEdadUsuario() {
 		LocalDate now = LocalDate.now();
 		Period diff = Period.between(this.getFechaN(), now);
@@ -39,7 +39,7 @@ public class Usuario {
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	// La edad se calcula, no se establece.
 	public Usuario(String dni, String nombre, String email, LocalDate fechaN, int votos) {
 		super();
@@ -100,7 +100,5 @@ public class Usuario {
 		return "Usuario [dni=" + dni + ", nombre=" + nombre + ", email=" + email + ", fechaN=" + fechaN + ", votos="
 				+ votos + ", edadUsuario=" + edadUsuario + "]";
 	}
-	
-	
 
 }

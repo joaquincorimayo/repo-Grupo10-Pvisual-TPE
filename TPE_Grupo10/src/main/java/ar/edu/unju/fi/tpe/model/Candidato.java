@@ -21,9 +21,8 @@ public class Candidato {
 	private String uri;
 	private int cantidadVotos;
 
-	
 	public Candidato() {
-		
+
 	}
 
 	public Candidato(int codigo, String nombre, String genero, String descripcion, String uri, int cantidadVotos) {

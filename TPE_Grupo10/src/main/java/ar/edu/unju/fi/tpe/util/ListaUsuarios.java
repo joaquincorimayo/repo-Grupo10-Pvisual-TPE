@@ -14,14 +14,14 @@ public class ListaUsuarios {
 
 	public ListaUsuarios() {
 		usuarios = new ArrayList<Usuario>();
-		
+
 		LocalDate fecha;
 		fecha = LocalDate.of(1999, 04, 15);
-		// La fecha NO se establece, se calcula automaticamente. 
-		usuarios.add(new Usuario("44888999", "Usuario1", "Usuario1@gmail.com", fecha,0));
+		// La edad NO se establece, se calcula automaticamente.
+		usuarios.add(new Usuario("44888999", "Usuario1", "Usuario1@gmail.com", fecha, 0));
 		fecha = LocalDate.of(1998, 03, 14);
-		usuarios.add(new Usuario("45888999", "Usuario2", "Usuario2@gmail.com", fecha,0));
-		
+		usuarios.add(new Usuario("45888999", "Usuario2", "Usuario2@gmail.com", fecha, 0));
+
 	}
 
 	public ArrayList<Usuario> getUsuarios() {
