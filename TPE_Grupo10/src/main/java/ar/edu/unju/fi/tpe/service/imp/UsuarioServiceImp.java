@@ -13,6 +13,7 @@ public class UsuarioServiceImp implements IUsuarioService {
 	@Autowired
 	private ListaUsuarios listaUsuarios;
 	
+	
 	@Override
 	public Usuario getUsuario() {
 		return new Usuario();
@@ -20,12 +21,11 @@ public class UsuarioServiceImp implements IUsuarioService {
 
 	@Override
 	public boolean guardarUsuario(Usuario usuario) {
-		boolean resp=listaUsuarios.getUsuarios().add(usuario);
-		return resp;
+		return listaUsuarios.getUsuarios().add(usuario);
 	}
 
 	@Override
-	public void modificarUsuario() {
+	public void modificarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 
 	}
@@ -37,21 +37,22 @@ public class UsuarioServiceImp implements IUsuarioService {
 	}
 
 	@Override
-	public ListaUsuarios getListaUsuarios() {
-		return listaUsuarios;
+	public ListaUsuarios getListaUsuario() {
+		return this.listaUsuarios;
 	}
 
 	@Override
 	public Usuario buscarUsuario(String dni) {
-		Usuario devolverUsuario=new Usuario();
-		for(Usuario user : this.listaUsuarios.getUsuarios()) {
-			if(user.getDni().equals(dni)) {
-				devolverUsuario.setDni(user.getDni());
-				devolverUsuario.setEmail(user.getEmail());
-				devolverUsuario.setFechaN(user.getFechaN());
-				devolverUsuario.setNombre(user.getNombre());
+		Usuario devolverUsuario = new Usuario();
+		for(Usuario usu : this.listaUsuarios.getUsuarios()) {
+			if(usu.getDni().equals(dni)) {
+				devolverUsuario.setDni(usu.getDni());
+				devolverUsuario.setEdadUsuario(usu.getEdadUsuario());
+				devolverUsuario.setEmail(usu.getEmail());
+				devolverUsuario.setFechaN(usu.getFechaN());
+				devolverUsuario.setNombre(usu.getNombre());
+				devolverUsuario.setVotos(usu.getVotos());
 			}
-			
 		}
 		return devolverUsuario;
 	}

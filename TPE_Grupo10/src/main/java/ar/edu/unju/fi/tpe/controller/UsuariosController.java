@@ -30,8 +30,9 @@ public class UsuariosController {
 	
 	@GetMapping("/listaUsuarios")
 	public ModelAndView getListaUsuarioPage() {
+		logger.info("Method: getListadoUsuarioPage() - Information: Se visualiza los usuarios registrados");
 		ModelAndView mav=new ModelAndView("lista_usuarios");
-		mav.addObject("usuarios", this.usuarioService.getListaUsuarios().getUsuarios());
+		mav.addObject("usuarios", this.usuarioService.getListaUsuario().getUsuarios());
 		return mav;
 	}
 
@@ -39,24 +40,27 @@ public class UsuariosController {
 	public String getFormUsuarioNuevoPage(Model model) {
 		model.addAttribute("usuario", this.usuarioService.getUsuario());
 		logger.info(
-				"Method getFormCandidatoNuevoPage() - Information: Se envia un objeto Candidato a la pagina nuevo_usuario");
+				"Method getFormUsuarioNuevoPage() - Information: Se envia un objeto Usuario a la pagina nuevo_usuario");
 		return "nuevo_usuario";
 	}
+	
 	@PostMapping("/guardar")
-	public ModelAndView addNuevoUsuario(@Validated @ModelAttribute("usuario")Usuario usuario,
+	public ModelAndView addNuevoUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,
 	BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
+			logger.info(
+					"Method addNuevoUsuario() - Information: ERROR");
 			ModelAndView mav = new ModelAndView("nuevo_usuario");
 			mav.addObject("usuario", usuario);
 			return mav;
 		}
 		
-	ModelAndView mav =new ModelAndView("lista_usuarios");
+	ModelAndView mav = new ModelAndView("lista_usuarios");
 	
 	if(usuarioService.guardarUsuario(usuario)) {
-		logger.info("Method: addNuevoCandidato() - Information: Se agregó un objeto al arrayList de usuario");
+		logger.info("Method: addNuevoUsuario() - Information: Se agregó un objeto al arrayList de usuario");
 	}
-	mav.addObject("usuario", this.usuarioService.getListaUsuarios().getUsuarios());
+	mav.addObject("usuarios", this.usuarioService.getListaUsuario().getUsuarios());
 	return mav;
 	}
 }
