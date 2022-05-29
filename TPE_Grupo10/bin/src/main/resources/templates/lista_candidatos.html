@@ -12,48 +12,64 @@
 	<header th:replace="layouts/header::fheader"></header>
 
 	<div class="container text-center">
-		<br>
-		<br>
+		<br /> <br />
 		<p class="h4 mb-10 text-center">Candidatos</p>
 
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<a th:href="@{/candidatos/nuevo}" id="nuevo" class="btn btn-primary">Nuevo</a>
 		</div>
-		<br>
+		<br />
 
 		<div class="col-12 d-flex justify-content-center">
 			<table class="table container border text-center">
 
-		<thead>
-			<tr>
-<!-- 				<th scope="col">Imagen de banda</th> -->
-				<th scope="col">Codigo</th>
-				<th scope="col">Nombre de Banda</th>
-				<th scope="col">Genero</th>
-				<th scope="col">Descripcion</th>
-				<th scope="col">Cantidad de Votos</th>
-				<th scope="col">Opciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="var: ${candidatos}">
-<!-- 				<td><img th:src="@{/images/{name}(name=${var.uri})}" alt="" width="70" height="70"></td> -->
-				<td th:text="${var.codigo}"></td>
-				<td th:text="${var.nombre}"></td>
-				<td th:text="${var.genero}"></td>
-				<td th:text="${var.descripcion}"></td>
-				<td th:text="${var.cantidadVotos}"></td>
+				<thead>
+					<tr>
+						<!-- 				<th scope="col">Imagen de banda</th> -->
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre de Banda</th>
+						<th scope="col">Genero</th>
+						<th scope="col">Descripcion</th>
+						<th scope="col">Cantidad de Votos</th>
+						<th scope="col">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="var: ${candidatos}">
+						<!-- 				<td><img th:src="@{/images/{name}(name=${var.uri})}" alt="" width="70" height="70"></td> -->
+						<td th:text="${var.codigo}"></td>
+						<td th:text="${var.nombre}"></td>
+						<td th:text="${var.genero}"></td>
+						<td th:text="${var.descripcion}"></td>
+						<td th:text="${var.cantidadVotos}"></td>
 
-				<td>
-					<a th:href="@{/candidatos/editar/}+${var.codigo}" id="iditarCandidato" class="btn btn-warning">Editar</a> 
-					<a th:href="@{/candidatos/eliminar/}+${var.codigo}" id="eliminarCandidato" class="btn btn-danger">Eliminar</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-			<br> <br>
+						<td><a th:href="@{/candidatos/editar/}+${var.codigo}"
+							id="iditarCandidato" class="btn btn-warning">Editar</a> <a
+							th:href="@{/candidatos/eliminar/}+${var.codigo}"
+							id="eliminarCandidato" class="btn btn-danger">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<br />
 		</div>
 	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
 	<footer th:replace="layouts/footer::ffooter"></footer>
 </body>
 </html>
