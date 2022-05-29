@@ -10,5 +10,5 @@ public interface IUsuarioService {
 	public void eliminarUsuario(String dni);
 	public ListaUsuarios getListaUsuario();
 	public Usuario buscarUsuario(String dni);
-	
+	public void agregarVoto(Usuario usuario);
 }

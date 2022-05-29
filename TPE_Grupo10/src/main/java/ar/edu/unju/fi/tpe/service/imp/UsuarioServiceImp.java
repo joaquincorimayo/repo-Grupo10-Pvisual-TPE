@@ -3,6 +3,7 @@ package ar.edu.unju.fi.tpe.service.imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.tpe.model.Candidato;
 import ar.edu.unju.fi.tpe.model.Usuario;
 import ar.edu.unju.fi.tpe.service.IUsuarioService;
 import ar.edu.unju.fi.tpe.util.ListaUsuarios;
@@ -27,6 +28,16 @@ public class UsuarioServiceImp implements IUsuarioService {
 	@Override
 	public void modificarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
+		for (Usuario can : this.listaUsuarios.getUsuarios()) {
+			if (can.getDni().equals(usuario.getDni())) {
+				can.setDni(usuario.getDni());
+				can.setEdadUsuario(usuario.getEdadUsuario());
+				can.setEmail(usuario.getEmail());
+				can.setFechaN(usuario.getFechaN());
+				can.setNombre(usuario.getNombre());
+				can.setVotos(usuario.getVotos());
+			}
+		}
 
 	}
 
@@ -56,5 +67,13 @@ public class UsuarioServiceImp implements IUsuarioService {
 		}
 		return devolverUsuario;
 	}
-
+	
+	@Override
+	public void agregarVoto(Usuario usuario) {
+		for(Usuario usu : this.listaUsuarios.getUsuarios()) {
+			if(usu.getDni().equals(usuario.getDni())) {
+				usu.setVotos(usuario.getVotos()+1);
+			}
+		}
+	}
 }

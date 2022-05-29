@@ -10,6 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<p th:text=${usuario.votos}></p>
 
 <!-- 	<p th:text=${usuario}></p> -->
 <!-- 	<br /> -->
@@ -18,11 +19,51 @@
 
 	<!-- 	Usuario que inicia la votacion -->
 	<h1>
-		Bienvenido <small th:text=${usuario.nombre}></small> !
+		Bienvenido <small th:text=${usuario}></small> !
 	</h1>
 	<!-- 	Lista de candidatos -->
 	<!-- 	completar -->
 
+	<header th:replace="layouts/header::fheader"></header>
+	<!--  {codigo;nombre;genero;descripcion;uri;cantidadVotos;} -->
+	<h3 class="text-center border">ARTISTAS</h3>
+	<br />
+	<br />
+	<div class="container text-center">
+<!-- 		<a th:href="@{/candidatos/nuevo}" id="nuevo" class="btn btn-primary">Nuevo</a> -->
+	</div>
+	<br />
+	<table class="table container border text-center">
+
+		<thead>
+			<tr>
+				<th scope="col">Imagen de banda</th>
+<!-- 				<th scope="col">Codigo</th> -->
+				<th scope="col">Nombre de Banda</th>
+				<th scope="col">Genero</th>
+				<th scope="col">Descripcion</th>
+				<th scope="col">Cantidad de Votos</th>
+<!-- 				<th scope="col">Opciones</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="var: ${candidatos}">
+				<td><img th:src="@{images/{name}(name=${var.uri})}" alt=""
+					width="70" height="70"></td>
+<!-- 				<td th:text="${var.codigo}"></td> -->
+				<td th:text="${var.nombre}"></td>
+				<td th:text="${var.genero}"></td>
+				<td th:text="${var.descripcion}"></td>
+				<td th:text="${var.cantidadVotos}"></td>
+
+				<td><a th:href="@{/usuarios/votacion/}+${var.codigo}"
+					id="votarCandidato" class="btn btn-warning">Votar</a> </td>
+			</tr>
+		</tbody>
+	</table>
+
+
 	<footer th:replace="layouts/footer::ffooter"></footer>
+	
 </body>
 </html>

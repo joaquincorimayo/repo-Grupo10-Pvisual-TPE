@@ -60,4 +60,12 @@ public class CandidatoServiceImp implements ICandidatoService {
 		return a.get();
 	}
 
+	@Override
+	public void agregarVotoCandidato(int codigo) {
+		for (Candidato can : this.listaCandidatos.getCandidatos()) {
+			if(can.getCodigo() == codigo) {
+				can.setCantidadVotos(can.getCantidadVotos()+1);			
+			}
+		}
+	}
 }
