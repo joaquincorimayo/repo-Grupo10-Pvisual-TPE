@@ -65,37 +65,39 @@ public class UsuariosController {
 
 		// Pagina donde se gestionara la votacion.
 		ModelAndView mav = new ModelAndView("iniciar_votacion");
-		// Solo quiero trabajar con el usuario que inicio la votacion.
-//		Usuario user = this.usuarioService.buscarUsuario(usuario.getDni());
-	
-		// Envio a la pagina el usuario particular y la lista de candidatos.
-		mav.addObject("usuario",this.usuarioService.getListaUsuario().getUsuarios().get(this.usuarioService.getListaUsuario().getUsuarios().size()-1));
-		
+		// Envio a la pagina el ultimo usuario y la lista de candidatos.
+		int ultimoUsuario = this.usuarioService.getListaUsuario().getUsuarios().size() - 1;
+		mav.addObject("usuario", this.usuarioService.getListaUsuario().getUsuarios().get(ultimoUsuario));
 		mav.addObject("candidatos", this.candidatoService.getListaCandidato().getCandidatos());
 		return mav;
 	}
-	
-		@GetMapping("/votacion/{codigo}")
-		public ModelAndView getFormUsuarioVotacionPage(@PathVariable(value = "codigo") int codigo) {
-			ModelAndView mav = new ModelAndView("iniciar_votacion");
-			this.usuarioService.agregarVoto(this.usuarioService.getListaUsuario().getUsuarios().get(this.usuarioService.getListaUsuario().getUsuarios().size()-1));
-//			this.usuarioService.modificarUsuario(usuario);
-			mav.addObject("usuario",this.usuarioService.getListaUsuario().getUsuarios().get(this.usuarioService.getListaUsuario().getUsuarios().size()-1));
+
+	@GetMapping("/votacion/{codigo}")
+	public ModelAndView getFormUsuarioVotacionPage(@PathVariable(value = "codigo") int codigo) {
+		// Control para usuario "Ninguno"
+		if (codigo == 0) {
 			this.candidatoService.agregarVotoCandidato(codigo);
-			mav.addObject("candidatos" , candidatoService.getListaCandidato().getCandidatos());
-//			// Incrementar voto a un Candidato
-//			 
-			if ( this.usuarioService.getListaUsuario().getUsuarios().get(this.usuarioService.getListaUsuario().getUsuarios().size()-1).getVotos() == 3) {
-				ModelAndView mav2 = new ModelAndView("index");
-				return mav2;
-			}
-//			
-			// Incrementar voto del Usuario (Buscar ese usario en la lista)
-			
+			ModelAndView mav2 = new ModelAndView("agredecimiento");
+			return mav2;
+		}
+		ModelAndView mav = new ModelAndView("iniciar_votacion");
+		// Se trabaja con el ultimo usuario agregado
+		int ultimoUsuario = this.usuarioService.getListaUsuario().getUsuarios().size() - 1;
+		this.usuarioService.agregarVoto(this.usuarioService.getListaUsuario().getUsuarios().get(ultimoUsuario));
+		mav.addObject("usuario", this.usuarioService.getListaUsuario().getUsuarios().get(ultimoUsuario));
 
-			return mav;
+		// Incrementar voto al candidato seleccionado
+		this.candidatoService.agregarVotoCandidato(codigo);
+		mav.addObject("candidatos", candidatoService.getListaCandidato().getCandidatos());
 
-		}	
-	
+		// Se controla que el usuario solamente realice 3 votos.
+		if (this.usuarioService.getListaUsuario().getUsuarios().get(ultimoUsuario).getVotos() == 3) {
+			ModelAndView mav2 = new ModelAndView("agredecimiento");
+			return mav2;
+		}
+
+		return mav;
+
+	}
 
 }

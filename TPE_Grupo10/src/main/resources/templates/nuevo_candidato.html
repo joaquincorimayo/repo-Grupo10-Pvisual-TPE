@@ -16,37 +16,46 @@
 	<h3>Alta de Candidato</h3>
 
 
-	<form class="card p-3 bg-light" th:action="@{/candidatos/guardar}" method="POST" th:object="${candidato}">
-		
+	<form class="card p-3 bg-light" th:action="@{/candidatos/guardar}"
+		method="POST" th:object="${candidato}">
+
 		<div class="row mb-3">
 			<label for="inputcodigo" class="col-sm-2 col-form-label">Codigo</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputcodigo" th:field="*{codigo}">
-				<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+				<input type="text" class="form-control" id="inputcodigo"
+					th:field="*{codigo}">
+				<div class="text-danger" th:if="${#fields.hasErrors('codigo')}"
+					th:errors="*{codigo}"></div>
 			</div>
 		</div>
-		
+
 		<div class="row mb-3">
 			<label for="inputNombres" class="col-sm-2 col-form-label">Nombre</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputNombres" th:field="*{nombre}">
-				<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+				<input type="text" class="form-control" id="inputNombres"
+					th:field="*{nombre}">
+				<div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
+					th:errors="*{nombre}"></div>
 			</div>
 		</div>
-		
+
 		<div class="row mb-3">
 			<label for="inputgenero" class="col-sm-2 col-form-label">Genero</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputgenero" th:field="*{genero}">
-				<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+				<input type="text" class="form-control" id="inputgenero"
+					th:field="*{genero}">
+				<div class="text-danger" th:if="${#fields.hasErrors('genero')}"
+					th:errors="*{genero}"></div>
 			</div>
 		</div>
-		
+
 		<div class="row mb-3">
 			<label for="inputdes" class="col-sm-2 col-form-label">Descripcion</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputdes" th:field="*{descripcion}">
-				<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+				<input type="text" class="form-control" id="inputdes"
+					th:field="*{descripcion}">
+				<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}"
+					th:errors="*{descripcion}"></div>
 			</div>
 		</div>
 

@@ -12,45 +12,63 @@
 	<header th:replace="layouts/header::fheader"></header>
 
 	<div class="container text-center">
-		<br>
-		<br>
+		<br /> <br />
 		<p class="h4 mb-10 text-center">Usuarios</p>
 
-<!-- 		<div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
-<!-- 			<a th:href="@{/usuarios/nuevo}" id="nuevo" class="btn btn-primary">Nuevo</a> -->
-<!-- 		</div> -->
+		<!-- 		<div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
+		<!-- 			<a th:href="@{/usuarios/nuevo}" id="nuevo" class="btn btn-primary">Nuevo</a> -->
+		<!-- 		</div> -->
 		<br>
 
 		<div class="col-12 d-flex justify-content-center">
 			<table class="table container border text-center">
 
-		<thead>
-			<tr>
-				<th scope="col">Dni</th>
-				<th scope="col">Nombre</th>
-				<th scope="col">Email</th>
-				<th scope="col">Fecha Nacimiento</th>
-				<th scope="col">edad</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="user: ${usuarios}">
-				<td th:text="${user.dni}"></td>
-				<td th:text="${user.nombre}"></td>
-				<td th:text="${user.email}"></td>
-				<td th:text="${user.fechaN}"></td>
-				<td th:text="${user.edadUsuario}"></td>
+				<thead>
+					<tr>
+						<th scope="col">Dni</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Email</th>
+						<th scope="col">Fecha Nacimiento</th>
+						<th scope="col">edad</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user: ${usuarios}">
+						<td th:text="${user.dni}"></td>
+						<td th:text="${user.nombre}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.fechaN}"></td>
+						<td th:text="${user.edadUsuario}"></td>
 
-<!-- 				<td> -->
-<!-- 					<a th:href="@{/candidatos/editar/}+${var.codigo}" id="iditarCandidato" class="btn btn-warning">Editar</a>  -->
-<!-- 					<a th:href="@{/candidatos/eliminar/}+${var.codigo}" id="eliminarCandidato" class="btn btn-danger">Eliminar</a> -->
-<!-- 				</td> -->
-			</tr>
-		</tbody>
-	</table>
-			<br> <br>
+						<!-- 				<td> -->
+						<!-- 					<a th:href="@{/candidatos/editar/}+${var.codigo}" id="iditarCandidato" class="btn btn-warning">Editar</a>  -->
+						<!-- 					<a th:href="@{/candidatos/eliminar/}+${var.codigo}" id="eliminarCandidato" class="btn btn-danger">Eliminar</a> -->
+						<!-- 				</td> -->
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<footer th:replace="layouts/footer::ffooter"></footer>
 </body>
 </html>
