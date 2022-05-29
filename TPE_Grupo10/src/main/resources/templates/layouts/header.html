@@ -6,11 +6,13 @@
 </head>
 <body>
 	<header th:fragment="fheader">
-		<nav>
-			<a th:href="@{/inicio}">Inicio</a>
-			<a th:href="@{/candidatos/listaCandidatos}">Candidatos</a> 
-			<a th:href="@{/usuarios/listaUsuarios}">Usuario</a> 
-			<a th:href="@{/usuarios/nuevo}">Ir a votar!</a>
+		<nav class="navbar navbar-dark bg-dark">
+			<form class="container-fluid justify-content-start">
+				<a class="btn btn-outline-success me-2" th:href="@{/inicio}">Inicio</a>
+				<a class="btn btn-sm btn-outline-secondary me-2" th:href="@{/candidatos/listaCandidatos}">Candidatos</a>
+				<a class="btn btn-sm btn-outline-secondary me-2" th:href="@{/usuarios/listaUsuarios}">Usuario</a>
+				<a class="btn btn-sm btn-outline-info me-2" th:href="@{/usuarios/nuevo}">Ir a votar!</a>
+  			</form>
 		</nav>
 	</header>
 </body>
