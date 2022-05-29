@@ -39,15 +39,16 @@ public class Usuario {
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public Usuario(String dni, String nombre, String email, LocalDate fechaN, int votos, int edadUsuario) {
+	
+	// La edad se calcula, no se establece.
+	public Usuario(String dni, String nombre, String email, LocalDate fechaN, int votos) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.email = email;
 		this.fechaN = fechaN;
 		this.votos = votos;
-		this.edadUsuario = edadUsuario;
+		this.edadUsuario = this.getEdadUsuario();
 	}
 
 	public String getDni() {
