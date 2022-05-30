@@ -35,7 +35,8 @@ public class UsuariosController {
 
 	@GetMapping("/listaUsuarios")
 	public ModelAndView getListaUsuarioPage() {
-		logger.info("Method: getListadoUsuarioPage() - Information: Se visualiza los usuarios registrados");
+		logger.info(
+				"Controller: usuarios - Method: getListadoUsuarioPage() - Information: Lista de usuarios registrados.");
 		ModelAndView mav = new ModelAndView("lista_usuarios");
 		mav.addObject("usuarios", this.usuarioService.getListaUsuario().getUsuarios());
 		return mav;
@@ -45,7 +46,7 @@ public class UsuariosController {
 	public String getFormUsuarioNuevoPage(Model model) {
 		model.addAttribute("usuario", this.usuarioService.getUsuario());
 		logger.info(
-				"Method getFormUsuarioNuevoPage() - Information: Se envia un objeto Usuario a la pagina nuevo_usuario");
+				"Controller: usuarios - Method getFormUsuarioNuevoPage() - Information: Se envia un objeto Usuario a la pagina nuevo_usuario");
 		return "nuevo_usuario";
 	}
 
@@ -53,14 +54,15 @@ public class UsuariosController {
 	public ModelAndView addNuevoUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			logger.info("Method addNuevoUsuario() - Information: ERROR");
+			logger.info("Controller: usuarios - Method addNuevoUsuario() - Information: Error de validacion");
 			ModelAndView mav = new ModelAndView("nuevo_usuario");
 			mav.addObject("usuario", usuario);
 			return mav;
 		}
 
 		if (usuarioService.guardarUsuario(usuario)) {
-			logger.info("Method: addNuevoUsuario() - Information: Se agregó un objeto al arrayList de usuario");
+			logger.info(
+					"Controller: usuarios - Method: addNuevoUsuario() - Information: Se agregó un objeto al arrayList de usuario");
 		}
 
 		// Pagina donde se gestionara la votacion.
@@ -74,6 +76,9 @@ public class UsuariosController {
 
 	@GetMapping("/votacion/{codigo}")
 	public ModelAndView getFormUsuarioVotacionPage(@PathVariable(value = "codigo") int codigo) {
+		logger.info(
+				"Controller: usuarios - Method: getFormUsuarioVotacionPage() - Information: codigo de candidato seleccionado"
+						+ codigo);
 		// Control para usuario "Ninguno"
 		if (codigo == 0) {
 			this.candidatoService.agregarVotoCandidato(codigo);

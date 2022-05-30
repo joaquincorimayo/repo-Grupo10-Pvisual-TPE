@@ -30,17 +30,18 @@ public class CandidatosController {
 
 	@GetMapping("/listaCandidatos")
 	public ModelAndView getListadoCandidatoPage() {
-		logger.info("Method: getListadoCandidatoPage() - Information: Se visualiza los candidatos registrados");
+		logger.info(
+				"Controller: Candidatos - Method: getListadoCandidatoPage() - Information: Lista de candidatos registrados");
 		ModelAndView mav = new ModelAndView("lista_candidatos");
 		mav.addObject("candidatos", this.candidatoService.getListaCandidato().getCandidatos());
 		return mav;
 	}
-	
+
 	@GetMapping("/nuevo")
 	public String getFormCandidatoNuevoPage(Model model) {
 		model.addAttribute("candidato", this.candidatoService.getCandidato());
 		logger.info(
-				"Method getFormCandidatoNuevoPage() - Information: Se envia un objeto Candidato a la pagina nuevo_candidato");
+				"Controller: Candidatos - Method getFormCandidatoNuevoPage() - Information: Se envia un objeto Candidato a la pagina nuevo_candidato");
 		return "nuevo_candidato";
 	}
 
@@ -49,7 +50,7 @@ public class CandidatosController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			logger.info(
-					"Method addNuevoCandidato() - Information: ERROR");
+					"Controller: Candidatos - Method addNuevoCandidato() - Information: Error de validacion para el objeto candidato.");
 			ModelAndView mav = new ModelAndView("nuevo_candidato");
 			mav.addObject("candidato", candidato);
 			return mav;
@@ -58,18 +59,19 @@ public class CandidatosController {
 		ModelAndView mav = new ModelAndView("lista_candidatos");
 
 		if (candidatoService.guardarCandidato(candidato)) {
-			logger.info("Method: addNuevoCandidato() - Information: Se agregó un objeto al arrayList de candidato");
+			logger.info(
+					"Controller: Candidatos - Method: addNuevoCandidato() - Information: Se agregó un objeto al ArrayList de candidatos");
 		}
 		mav.addObject("candidatos", this.candidatoService.getListaCandidato().getCandidatos());
 		return mav;
 	}
 
-	
-
 	/* Objetivo: modificar candidato */
 	@GetMapping("/editar/{codigo}")
 	public ModelAndView getEditarCandidatoPage(@PathVariable(value = "codigo") int codigo) {
-		logger.info("Method: getEditarCandidatoPage() - Information: ");
+		logger.info(
+				"Controller: Candidatos - Method: getEditarCandidatoPage() - Information: Codigo del candidato a modificar "
+						+ codigo);
 		ModelAndView mav = new ModelAndView("edicion_Candidato");
 		Candidato candidato = this.candidatoService.buscarCandidato(codigo);
 		mav.addObject("candidato", candidato);
@@ -81,13 +83,15 @@ public class CandidatosController {
 			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
-			logger.info("Method: setDatosNuevosCandidato() - Information: Error");
+			logger.info(
+					"Controller: Candidatos - Method: setDatosNuevosCandidato() - Information: Error de validacion.");
 			ModelAndView mav = new ModelAndView("edicion_Candidato");
 			mav.addObject("candidato", candidato);
 			return mav;
 		}
-		
-		logger.info("Method: setDatosNuevosCandidato() - Information: Se modificaron los datos.");
+
+		logger.info(
+				"Controller: Candidatos - Method: setDatosNuevosCandidato() - Information: Se modifican los datos.");
 		ModelAndView mav = new ModelAndView("redirect:/candidatos/listaCandidatos");
 		candidatoService.modificarCandidato(candidato);
 		return mav;
@@ -96,7 +100,9 @@ public class CandidatosController {
 	/* Objetivo: eliminar candidato */
 	@GetMapping("/eliminar/{codigo}")
 	public ModelAndView eliminarDatosCandidato(@PathVariable(value = "codigo") int codigo) {
-		logger.info("Method: eliminarDatosCandidato() - Information: Se elimina el candidato");
+		logger.info(
+				"Controller: Candidatos - Method: eliminarDatosCandidato() - Information: Se elimina el candidato con codigo "
+						+ codigo);
 		ModelAndView mav = new ModelAndView("redirect:/candidatos/listaCandidatos");
 		candidatoService.eliminarCandidato(codigo);
 		return mav;

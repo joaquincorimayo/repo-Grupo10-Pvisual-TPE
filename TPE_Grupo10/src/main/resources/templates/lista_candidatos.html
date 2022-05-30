@@ -42,11 +42,11 @@
 						<td th:text="${var.genero}"></td>
 						<td th:text="${var.descripcion}"></td>
 						<td th:text="${var.cantidadVotos}"></td>
-
-						<td><a th:href="@{/candidatos/editar/}+${var.codigo}"
-							id="iditarCandidato" class="btn btn-warning">Editar</a> <a
-							th:href="@{/candidatos/eliminar/}+${var.codigo}"
-							id="eliminarCandidato" class="btn btn-danger">Eliminar</a></td>
+						<!-- El candidato 'ninguno' no se puede editar ni eliminar -->
+						<td th:if="${var.codigo != 0}">
+							<a th:href="@{/candidatos/editar/}+${var.codigo}" id="iditarCandidato" class="btn btn-warning">Editar</a> 
+							<a th:href="@{/candidatos/eliminar/}+${var.codigo}" id="eliminarCandidato" class="btn btn-danger">Eliminar</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

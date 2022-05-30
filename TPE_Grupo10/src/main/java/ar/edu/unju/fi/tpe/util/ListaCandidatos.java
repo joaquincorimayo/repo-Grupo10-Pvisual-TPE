@@ -13,7 +13,7 @@ public class ListaCandidatos {
 
 	public ListaCandidatos() {
 		candidatos = new ArrayList<Candidato>();
-		candidatos.add(new Candidato(0, "Ninguno", "Ninguno", "Vota en blanco", "ninguno.jpg", 0));
+		candidatos.add(new Candidato(0, "Ninguno", "Ninguno", "Votar en blanco", "ninguno.jpg", 0));
 		candidatos.add(new Candidato(1, "banda1", "rock", "descripcion 1", "bersuit.jpg", 0));
 		candidatos.add(new Candidato(2, "banda2", "pop", "descripcion 2", "callejeros.jpg", 0));
 		candidatos.add(new Candidato(3, "banda3", "romantico", "descripcion 3", "Intoxicados.jpg", 0));
